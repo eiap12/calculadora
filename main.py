@@ -10,20 +10,8 @@ class Keyboard(GRAPHIC_OBJECT_TEMPLATE):
     def __init__(self):
         super().__init__()
         self.color = None
-        self.div = None
         self.id_button = []
-
-    def change_color(self, e):
-        instance = self.div.child_id[e].get_obj()
-        instance.color = white
-        print("COLOR: ", instance.color[1])
-        print("objetos:", obj_admin.objetos)
-
-    def prev_color(self, e):
-        instance = self.div.child_id[e].get_obj()
-        instance.color = gray
-        print("COLOR: ", instance.color[1])
-        print("objetos:", obj_admin.objetos)
+        self.KEYBOARD_BACKGROUND = Element([0, 120], 250, 250, b4, None)
 
     def child_creator(self):
         x = 0
@@ -31,18 +19,16 @@ class Keyboard(GRAPHIC_OBJECT_TEMPLATE):
         c = 0
         num = 1
         for e in self.id_button:
-
-            self.div.append_child(e, gray, 63, posx=x, posy=y)
-            self.div.child_id[e].set_value(num)
-            self.div.child_id[e].click_on = True
-            self.div.child_id[e].text_attributes = {'num': num, 'color': black, 'width': 5, 'posx': 0, 'posy': 0}
+            self.KEYBOARD_BACKGROUND.container.append(e, Element([x, y], 63, 63, green, self.KEYBOARD_BACKGROUND))
+            self.KEYBOARD_BACKGROUND.container.childs[e].set_value(num)
+            self.KEYBOARD_BACKGROUND.container.childs[e].create_event()
             num = num + 1
             x = x + 62
             c = c + 1
             if c == 3 or c == 6 or c == 9:
                 y = y + 62
                 x = 0
-        print("CHILD_ID", self.div.child_id)
+        print("CHILD_ID", self.KEYBOARD_BACKGROUND.container.childs)
         print("ID_BUTTOM", self.id_button)
 
     def anim(self):
@@ -51,42 +37,27 @@ class Keyboard(GRAPHIC_OBJECT_TEMPLATE):
     def start(self):
         if not self.id_button:
             for e in range(9):
-                self.id_button.append(("div_child" + str(e)))
-        self.div = Div_father(screen, b4, 250, 250, pos_x=0, pos_y=120)
+                self.id_button.append(("button" + str(e)))
+
         self.child_creator()
 
     def update(self):
         pass
 
     def fixedUpdate(self):
-        self.clean_screen(screen)
+        screen.fill((255, 255, 255))
         print("fixedUpdate de: ", self)
-        self.div.fixedUpdate()
+        self.KEYBOARD_BACKGROUND.fixedUpdate()
 
-
-class prueba(GRAPHIC_OBJECT_TEMPLATE):
-    def __init__(self):
-        super().__init__()
-        self.box = Graphics(screen)
-        self.color = [0, 0, 0]
-
-    def change_color(self):
-        if self.color[0] < 255:
-            self.color[0] += 5
-
-    def anim(self):
-        self.change_color()
-
-    def start(self):
-        self.color_process = multiprocessing.Value('i', self.color[0])
-
-    def fixedUpdate(self):
-        self.box.draw(50, 50, 0, 0, self.color)
 
 
 # Inicializa
-# k1 = Keyboard()
-p1 = Element([0,0],50,50, white)
+k1 = Keyboard()
+"""p1 = Element([0,0],50,50, white)
+p1.append("puta", Element([0,0],25,25, black))
+obj = p1.get_object("puta")
+obj.append("perra", Element([0,0],5,5, green))
+print(obj.father)"""
 
 # No modificar a menos de que sea necesario
 clock = pygame.time.Clock()

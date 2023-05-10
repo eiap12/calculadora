@@ -71,7 +71,7 @@ class Graphics:
             return pos_x, pos_y
 
 
-class RECT(ABC):
+class RECTANGLE(ABC):
     def __init__(self, pos, width, height, color):
         self.pos = pos
         self.width = width

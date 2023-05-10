@@ -14,12 +14,6 @@ class GRAPHIC_OBJECT_TEMPLATE(ABC):
         self.start_state = False
         obj_admin.add_obj(self)
 
-    def clean_screen(self, color=None):
-        # Limpia la pantalla
-        if color is None:
-            screen.fill((255, 255, 255))
-        else:
-            screen.fill(color)
 
     def get_vars(self):
         """
@@ -29,7 +23,6 @@ class GRAPHIC_OBJECT_TEMPLATE(ABC):
         """
         return str(self.__dict__)
 
-    @abstractmethod
     def anim(self):
         """
         Aquí va código que se cambiara atributos del objeto progresivamente en un lapso de tiempo,
@@ -39,7 +32,6 @@ class GRAPHIC_OBJECT_TEMPLATE(ABC):
         """
         pass
 
-    @abstractmethod
     def start(self):
 
         """
@@ -49,7 +41,6 @@ class GRAPHIC_OBJECT_TEMPLATE(ABC):
         """
         pass
 
-    @abstractmethod
     def update(self):
         """
         Aquí va la logica del objeto se ejecutará constantemente en un bucle.
@@ -58,7 +49,6 @@ class GRAPHIC_OBJECT_TEMPLATE(ABC):
         """
         pass
 
-    @abstractmethod
     def fixedUpdate(self):
         """
         Aquí se deben colocar únicamente código que se dibuje en pantalla.

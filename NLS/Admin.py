@@ -1,5 +1,10 @@
 from colorama import Fore
+from global_code import *
 
+class Compare:
+    def __init__(self):
+        self.current_state = {}
+        self.prev_state = {}
 
 # Patron de diseño: Observer
 class Admin:
@@ -30,6 +35,7 @@ class Admin:
 
     def update(self):
         # Este método regula el momento en que se ejecutan los métodos de los objetos en la lista objetos
+
         for instance in self.objetos:
             # Ejecuta una sola vez el método start del objeto
             if not instance.start_state:
