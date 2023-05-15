@@ -1,10 +1,21 @@
 from colorama import Fore
 from global_code import *
 
+
 class Compare:
-    def __init__(self):
+    def __init__(self, instance):
+        self.instance = instance
         self.current_state = {}
         self.prev_state = {}
+
+    def update(self):
+        self.current_state[self.instance] = hash(str(self.instance.__dict__))
+        if self.current_state != self.prev_state:
+            self.prev_state[self.instance] = hash(str(self.instance.__dict__))
+            return self.current_state
+        else:
+            pass
+
 
 # Patron de diseño: Observer
 class Admin:

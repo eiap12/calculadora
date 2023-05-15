@@ -8,16 +8,19 @@ class MOUSE_EVENTS(ABC):
         self._height = obj.height
         self._pos = obj.pos
 
-    def onclick(self,f, *args):
-        cursor_on = self.check_cursor_position()
+    def onClick(self, f=None, *args):
+        cursor_on = self.mouse_over()
         click = self.click()
         if cursor_on and click:
-            f(*args)
+            try:
+                f(*args)
+            except TypeError:
+                pass
             return True
         else:
             return False
 
-    def check_cursor_position(self):
+    def mouse_over(self):
         mouse_pos = pygame.mouse.get_pos()
         if self._pos[0] < mouse_pos[0] < (self._pos[0] + self._width) and \
                 self._pos[1] < mouse_pos[1] < (self._pos[1] + self._height):

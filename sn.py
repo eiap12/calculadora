@@ -61,3 +61,5 @@ class Sn(Graphics):  # clase Sistema de Números
                 n = n + 6
 
 
+class Text:
+    def __init__(self):
