@@ -1,5 +1,10 @@
 from abc import ABC
+import msvcrt
 import pygame
+
+
+class KEYBOARD(ABC):
+    pass
 
 
 class MOUSE_EVENTS(ABC):

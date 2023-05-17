@@ -1,4 +1,5 @@
 from NLS.Graphics import *
+from NLS.GRAPHIC_OBJECT_TEMPLATE import *
 from numeros import *
 
 
@@ -61,5 +62,19 @@ class Sn(Graphics):  # clase Sistema de Números
                 n = n + 6
 
 
-class Text:
-    def __init__(self):
+class Text(GRAPHIC_OBJECT_TEMPLATE):
+    def __init__(self, text, color, size, father):
+        super().__init__()
+        self.father = father
+        self.size = size
+        self.font = pygame.font.SysFont("segoeui", size)
+        self.text = self.font.render(str(text), True, color)
+
+    def pos(self):
+        pos_x = ((self.father.get_rect()["width"] - self.text.get_rect().width) / 2) + self.father.get_pos()[0]
+        pos_y = ((self.father.get_rect()["height"] - self.text.get_rect().height) / 2) + self.father.get_pos()[1]
+        pos = [int(pos_x), int(pos_y)]
+        return pos
+
+    def fixedUpdate(self):
+        screen.blit(self.text, self.pos())

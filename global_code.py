@@ -74,7 +74,7 @@ lightcyan = 224, 255, 255
 lightgoldenrodyellow = 250, 250, 210
 lightgray = 211, 211, 211
 lightgreen = 144, 238, 144
-lightgrey = 211, 211, 211
+superlightgray = 245, 245, 245
 lightpink = 255, 182, 193
 lightsalmon = 255, 160, 122
 lightseagreen = 32, 178, 170
@@ -151,6 +151,6 @@ yellowgreen = 154, 205, 50
 
 pygame.init()
 
-size = width, height = 300, 400
+size = width, height = 300, 500
 screen = pygame.display.set_mode(size)
 

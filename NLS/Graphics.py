@@ -1,5 +1,4 @@
 from abc import ABC
-
 from pygame import gfxdraw
 from global_code import *
 
@@ -8,9 +7,6 @@ from global_code import *
 # En esta primera version la clase graphics solo puede dibujar rectangulos en pantalla
 class Graphics:
     # Esta clase funciona como base para dibujar figuras varias
-
-    def __init__(self, screen):
-        self.screen = screen
 
     @staticmethod
     def draw(width, height, pos_x, pos_y, color):  # Dibuja en pantalla
