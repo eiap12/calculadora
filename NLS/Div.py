@@ -117,7 +117,7 @@ class Button(Element):
         self.events.create_mouse_event()
         self.display = None
 
-    def mouse_fun(self, fun, param):
+    def add_click_fun(self, fun, param):
         try:
             # Ejecuta la función dada como parámetro
             fun(param)
@@ -128,7 +128,7 @@ class Button(Element):
         # Ejecuta las respectivas funciones para la correcta funcionalidad del objeto
         self.events.mouse_event.onClick(self.set_color, self.pressed_color)
         self.events.mouse_event.onClick(self.display.add_num, self.get_value())
-        self.events.mouse_event.onClick(self.mouse_fun)
+        self.events.mouse_event.onClick(self.add_click_fun)
         if not self.events.mouse_event.onClick():
             self.set_color(self.color)
 

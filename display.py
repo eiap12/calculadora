@@ -24,7 +24,7 @@ class Display(GRAPHIC_OBJECT_TEMPLATE):
                 self.operation = str(num)
             else:
                 self.operation += str(num)
-        time.sleep(0.1)
+        time.sleep(0.15)
 
     def fixedUpdate(self):
         self.operation_render.add_text(self.operation, 30, black)
