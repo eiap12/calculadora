@@ -19,6 +19,7 @@ class Keyboard(GRAPHIC_OBJECT_TEMPLATE):
         self.display = display
 
     def define(self, num, e):
+        # Define los signos
         if num == 10:
             self.KEYBOARD_BACKGROUND.container.childs[e].set_value("+")
             self.KEYBOARD_BACKGROUND.container.childs[e].show_value(30, black)
@@ -39,6 +40,7 @@ class Keyboard(GRAPHIC_OBJECT_TEMPLATE):
             self.KEYBOARD_BACKGROUND.container.childs[e].show_value(30, black)
 
     def child_creator(self):
+        # Crea el conjunto de botones
         x_offset = int((screen.get_rect().width - 70 * 3) / 2)
         y_offset = 10
         column = 0
@@ -65,6 +67,7 @@ class Keyboard(GRAPHIC_OBJECT_TEMPLATE):
 
     def start(self):
         if not self.id_button:
+            # Crea el nombre de los botones
             for e in range(15):
                 self.id_button.append(("button" + str(e)))
 

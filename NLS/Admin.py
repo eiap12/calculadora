@@ -1,14 +1,15 @@
 from colorama import Fore
-from global_code import *
 
 
 class Compare:
+    # Observa si hay cambios en la instancia dada
     def __init__(self, instance):
         self.instance = instance
         self.current_state = {}
         self.prev_state = {}
 
     def update(self):
+        # Se compara el hash anterior al cambio y retorna estado actual en ese momento
         self.current_state[self.instance] = hash(str(self.instance.__dict__))
         if self.current_state != self.prev_state:
             self.prev_state[self.instance] = hash(str(self.instance.__dict__))
@@ -72,4 +73,5 @@ class Admin:
             instance.anim()
 
 
+# instancia única de la clase Admin
 obj_admin = Admin()

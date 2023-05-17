@@ -68,6 +68,7 @@ class Graphics:
 
 
 class RECTANGLE(ABC):
+    # Interfaz RECTANGLE sirve de base para renderizar figuras en pantalla
     def __init__(self, pos, width, height, color):
         self.pos = pos
         self.width = width
@@ -75,4 +76,5 @@ class RECTANGLE(ABC):
         self.color = color
 
     def render(self):
+        # Dibuja la figura
         Graphics.draw(self.width, self.height, self.pos[0], self.pos[1], self.color)

@@ -22,6 +22,6 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-    clock.tick(60)
+    clock.tick(120)
     obj_admin.update()
     pygame.display.flip()

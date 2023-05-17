@@ -2,6 +2,7 @@ from NLS.Div import *
 
 
 class Display(GRAPHIC_OBJECT_TEMPLATE):
+    # Crea una pantalla en la cual se muestran las operaciones y resultados
     def __init__(self):
         super().__init__()
         self.DISPLAY_BACKGROUND = Element([0, 0], screen.get_size()[0], 120, superlightgray, None)
@@ -11,6 +12,7 @@ class Display(GRAPHIC_OBJECT_TEMPLATE):
         self.result = ""
 
     def add_num(self, num):
+        # Agrega un número a self.operation para posteriormente realizar la operación
         if num == "=":
             if self.operation == "":
                 self.result = ""
@@ -22,6 +24,7 @@ class Display(GRAPHIC_OBJECT_TEMPLATE):
                 self.operation = str(num)
             else:
                 self.operation += str(num)
+        time.sleep(0.1)
 
     def fixedUpdate(self):
         self.operation_render.add_text(self.operation, 30, black)
